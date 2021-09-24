@@ -1,7 +1,7 @@
 import torch
 from collections import OrderedDict
 
- class WeightPenalty(torch.nn.Module):
+class WeightPenalty(torch.nn.Module):
      def __init__(self, norm='l2'):
          super(WeightPenalty, self).__init__()
          self.norm = norm
@@ -17,9 +17,9 @@ from collections import OrderedDict
                  else:
                      raise NotImplementedError
 
-     return weight_loss
+         return weight_loss
 
- class MaxHingeLossWithRejection(torch.nn.Module):
+class MaxHingeLossWithRejection(torch.nn.Module):
      def __init__(self, cost:float, alpha:float=None, beta:float=None, use_softplus=True):
          super(MaxHingeLossWithRejection, self).__init__()
          assert 0 < cost < 0.5
@@ -64,4 +64,4 @@ from collections import OrderedDict
          loss_dict['A mean'] = A.detach().mean().cpu().item()
          loss_dict['B mean'] = B.detach().mean().cpu().item()
 
-      return maxhinge_loss, loss_dict
+         return maxhinge_loss, loss_dict
